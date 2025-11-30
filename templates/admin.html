@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cafe Coffee Day – Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="topbar">
+    <div class="brand-area">
+        <div class="brand-logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Cafe Coffee Day">
+        </div>
+        <div>
+            <div class="brand-text-main">Cafe Coffee Day</div>
+            <div class="brand-text-sub">Admin Panel</div>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('admin_logout') }}">Logout</a>
+    </div>
+</div>
+
+<div class="page-main container">
+
+    <!-- ACTIVE ORDERS -->
+    <div class="section-box">
+        <div class="section-title">Active Orders</div>
+        <div class="section-subtitle">
+            Pending / Preparing / Ready orders in queue. Scheduled ones close to pickup are highlighted.
+        </div>
+
+        <table id="ordersTable">
+            <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Name</th>
+                <th>SRN</th>
+                <th>Type</th>
+                <th>Pickup Time</th>
+                <th>Status</th>
+                <th>Total (₹)</th>
+                <th>Created</th>
+                <th>Items</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody id="ordersBody"></tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <!-- COMPLETED ORDERS -->
+    <div class="section-box">
+        <div class="section-title">Completed Orders</div>
+        <div class="section-subtitle">
+            Orders picked up and verified with pickup code. Queue number is fixed.
+        </div>
+
+        <table id="completedOrdersTable">
+            <thead>
+            <tr>
+                <th>Queue</th>
+                <th>Order ID</th>
+                <th>Name</th>
+                <th>SRN</th>
+                <th>Type</th>
+                <th>Pickup Time</th>
+                <th>Total (₹)</th>
+                <th>Created</th>
+                <th>Items</th>
+            </tr>
+            </thead>
+            <tbody id="completedOrdersBody"></tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <!-- CANCELLED ORDERS -->
+    <div class="section-box">
+        <div class="section-title">Cancelled Orders</div>
+        <div class="section-subtitle">
+            Scheduled orders cancelled by customer. Refund is initiated automatically.
+        </div>
+
+        <table id="cancelledOrdersTable">
+            <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Name</th>
+                <th>SRN</th>
+                <th>Type</th>
+                <th>Pickup Time</th>
+                <th>Status</th>
+                <th>Total (₹)</th>
+                <th>Created</th>
+                <th>Items</th>
+            </tr>
+            </thead>
+            <tbody id="cancelledOrdersBody"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='admin.js') }}"></script>
+</body>
+</html>

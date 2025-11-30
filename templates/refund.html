@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Refund – {{ order.order_id }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="receipt-container">
+    <div class="receipt-header">
+        <div>
+            <div class="receipt-title">Refund initiated</div>
+            <div class="receipt-meta">
+                Order ID: <strong>{{ order.order_id }}</strong><br>
+                Customer: <strong>{{ order.customer_name }}</strong><br>
+                SRN: <strong>{{ order.srn or "-" }}</strong><br>
+                Status: <strong>{{ order.status }}</strong>
+            </div>
+        </div>
+    </div>
+
+    <p class="receipt-meta" style="margin-top:8px;">
+        Your scheduled order has been cancelled successfully.<br>
+        <strong>Refund initiated and will be reaching you within 2 working days.</strong>
+    </p>
+
+    <table class="receipt-table">
+        <thead>
+        <tr>
+            <th>Drink</th>
+            <th>Size</th>
+            <th>Qty</th>
+            <th>Price / cup</th>
+            <th>Line total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for it in order.items %}
+            <tr>
+                <td>{{ it.display_name }}</td>
+                <td>{{ it.size }}</td>
+                <td>{{ it.qty }}</td>
+                <td>₹{{ it.price_per_cup }}</td>
+                <td>₹{{ it.line_total }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p class="receipt-total">
+        Total charged: ₹{{ order.total }}
+    </p>
+
+    <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
+        <span class="hint">You can track this order anytime using the Track page.</span>
+        <button onclick="window.location.href='{{ url_for('track_page') }}'">Back to Track</button>
+    </div>
+</div>
+</body>
+</html>

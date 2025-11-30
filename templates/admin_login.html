@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Login – Coffee Corner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+    <header class="topbar">
+        <div class="brand-area">
+            <div class="brand-logo">CC</div>
+            <div>
+                <div class="brand-text-main">Coffee Corner</div>
+                <div class="brand-text-sub">Secure admin access</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="login-shell">
+        <div class="login-card">
+            <h1>Admin sign in</h1>
+            <div class="login-sub">
+                Restricted area. Use the credentials configured for this deployment.
+            </div>
+
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
+
+            <form method="post">
+                <div class="customer-section">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="admin">
+                </div>
+
+                <div class="customer-section">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="••••••••">
+                </div>
+
+                <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                    <button type="submit">Sign in</button>
+                    <span class="hint">Demo: admin / admin123</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
