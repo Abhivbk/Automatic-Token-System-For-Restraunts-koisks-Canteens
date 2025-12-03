@@ -170,13 +170,12 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-st.markdown("""
-<style>
-    [data-testid="stSidebar"] {display: none;}
-    [data-testid="collapsedControl"] {display: none;}
-    section[data-testid="stSidebarNav"] {display: none;}
-</style>
-""", unsafe_allow_html=True)
+st.set_page_config(
+    page_title="CCD Ordering",
+    page_icon="☕",
+    layout="centered",
+    initial_sidebar_state="expanded"
+)
 
 def main():
     init_db()
